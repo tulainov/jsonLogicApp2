@@ -24,9 +24,6 @@
       "dom"
     ]
   },
-  "include": [
-    "src/assets/jsonLogic.d.ts"
-  ],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

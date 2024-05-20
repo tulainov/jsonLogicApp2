@@ -1,20 +1,15 @@
 import { Component } from '@angular/core';
-import * as jsonLogic from 'json-logic-js'
+import { JsonLogicClass } from '../scripts/json-logic';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+    jsonLogicClass = new JsonLogicClass();
 
-  rule: any;
-  data: any;
-
-  getRuleAndData() {
-
-  }
-
-
-  // result: any = jsonLogic.apply(this.rule, this.data);
+    applyLogic() {
+        this.jsonLogicClass.js2jsonlogic();
+    }
 }
