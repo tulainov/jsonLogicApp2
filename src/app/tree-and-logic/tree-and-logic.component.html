@@ -1,26 +1,35 @@
 <section [formGroup]="logic">
+
   <div id="rootNode">
+
     <label for="data">Data (type a number): </label>
     <input id="data" type="text" formControlName="data" autocomplete="off" required>
     <br>
+
     <label for="condition">Condition (type operation and value (' ' between)): </label>
     <input id="condition" type="text" formControlName="condition" autocomplete="off" required>
+
     <br>
   </div>
 
   <button type="button" (click)="addNode()">Add node</button>
   <br>
+
   <button type="button"  (click)="applyLogic()">Result</button>
   <p>{{result}}</p>
 
   <div *ngIf="nodes.length > 0" formArrayName="nodes" id="childNode">
+
     <div *ngFor="let node of nodes.controls; let i = index" [formGroupName]="i">
+
       <label for="nodeData-{{i}}">Node Data (type a number): </label>
       <input id="nodeData-{{i}}" type="text" formControlName="data" autocomplete="off" required>
       <br>
+
       <label for="nodeCondition-{{i}}">Node Condition (type operation and value (' ' between)): </label>
       <input id="nodeCondition-{{i}}" type="text" formControlName="condition" autocomplete="off" required>
       <br>
+
     </div>
   </div>
 </section>

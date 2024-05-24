@@ -68,10 +68,6 @@ export class TreeAndLogicComponent {
 
         const dataValue = parseFloat(this.data?.value as string); // Ensure the data is treated as a number
 
-        if (isNaN(dataValue)) {
-            throw new Error('Data must be a valid number');
-        }
-
         // Construct JSON Logic rule
         const rule = {
             [this.operation]: [dataValue, this.val]

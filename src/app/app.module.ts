@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
 import { TreeAndLogicComponent } from './tree-and-logic/tree-and-logic.component';
+import { LearnTreeComponent } from './learn-tree/learn-tree.component';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { TreeAndLogicComponent } from './tree-and-logic/tree-and-logic.component
     AppComponent,
     ProfileEditorComponent,
     TreeAndLogicComponent,
+    LearnTreeComponent,
   ],
     imports: [
         BrowserModule,
