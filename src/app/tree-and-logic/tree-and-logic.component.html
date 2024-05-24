@@ -1,14 +1,24 @@
-<form [formGroup]="form">
-  <div formArrayName="nodes" *ngFor="let node of nodes.controls; index as i">
-    <div [formGroupName]="i">
-      <input formControlName="variable" placeholder="Variable">
-      <input formControlName="condition" placeholder="Condition">
-      <select formControlName="operator" *ngIf="i > 0">
-        <option value="and">AND</option>
-        <option value="or">OR</option>
-      </select>
-      <button (click)="removeNode(i)">Remove</button>
-    </div>
+<section [formGroup]="logic">
+
+  <div id="rootNode">
+
+    <label for="data">Data: </label>
+    <input id="data" type="text"
+               formControlName="data"
+               autocomplete="off"
+               required>
+
+    <br>
+
+    <label for="condition">Condition (type operation): </label>
+    <input id="condition" type="text"
+           formControlName="condition"
+           autocomplete="off"
+           required>
+
+    <button type="button" [disabled]="!logic.valid" (click)="addNode()">Add node</button>
   </div>
-  <button (click)="addNode()">Add</button>
-</form>
+
+
+
+</section>

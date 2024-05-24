@@ -1,36 +1,35 @@
 import { Component } from '@angular/core';
 import * as jsonLogic from 'json-logic-js'
-import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import {FormBuilder, FormArray, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-tree-and-logic',
   templateUrl: './tree-and-logic.component.html',
   styleUrls: ['./tree-and-logic.component.css']
 })
+//TODO: use JSON Pipe to represent the logic in the end
 export class TreeAndLogicComponent {
-  form: FormGroup;
 
-  constructor(private fb: FormBuilder) {
-    this.form = this.fb.group({
-      nodes: this.fb.array([])
-    });
+  constructor(private formBuilder: FormBuilder) {
   }
 
+  logic = this.formBuilder.group({
+      // TODO: condition split with split() add all operations, with switch case go though them, if equals something - then we'll be using it, if no - throw an error
+      data: ['', Validators.required],
+      condition: ['', Validators.required],
+
+      nodes: this.formBuilder.array([this.formBuilder.control('')])
+  });
+
   get nodes() {
-    return this.form.get('nodes') as FormArray;
+    return this.logic.get('nodes') as FormArray;
   }
 
   addNode() {
-    const node = this.fb.group({
-      variable: ['', Validators.required],
-      condition: ['', Validators.required],
-      operator: ['']
+    const node = this.formBuilder.group({
+        data: ['', Validators.required],
+        condition: ['', Validators.required]
     });
-
     this.nodes.push(node);
-  }
-
-  removeNode(index: number) {
-    this.nodes.removeAt(index);
   }
 }
