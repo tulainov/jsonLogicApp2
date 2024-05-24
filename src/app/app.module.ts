@@ -2,20 +2,23 @@ import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {FormsModule} from "@angular/forms";
-import { CorrectedLogicComponent } from './corrected-logic/corrected-logic.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
+import { TreeAndLogicComponent } from './tree-and-logic/tree-and-logic.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CorrectedLogicComponent,
+    ProfileEditorComponent,
+    TreeAndLogicComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule
+    ],
   providers: [
     provideClientHydration()
   ],

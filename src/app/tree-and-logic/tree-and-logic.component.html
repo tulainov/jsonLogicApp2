@@ -1,0 +1,14 @@
+<form [formGroup]="form">
+  <div formArrayName="nodes" *ngFor="let node of nodes.controls; index as i">
+    <div [formGroupName]="i">
+      <input formControlName="variable" placeholder="Variable">
+      <input formControlName="condition" placeholder="Condition">
+      <select formControlName="operator" *ngIf="i > 0">
+        <option value="and">AND</option>
+        <option value="or">OR</option>
+      </select>
+      <button (click)="removeNode(i)">Remove</button>
+    </div>
+  </div>
+  <button (click)="addNode()">Add</button>
+</form>

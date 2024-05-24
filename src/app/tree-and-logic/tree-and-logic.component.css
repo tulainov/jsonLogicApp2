@@ -1,0 +1,22 @@
+div[formGroupName], div[formArrayName] {
+  margin-left: 20px;
+  border-left: 2px solid #ccc;
+  padding-left: 10px;
+}
+
+label {
+  display: block;
+  margin: 5px 0;
+}
+
+input {
+  margin-right: 10px;
+}
+
+select {
+  margin-right: 10px;
+}
+
+button {
+  margin-right: 10px;
+}

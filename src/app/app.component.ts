@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { JsonLogicClass } from '../scripts/json-logic';
 
 @Component({
     selector: 'app-root',
@@ -7,9 +6,6 @@ import { JsonLogicClass } from '../scripts/json-logic';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    jsonLogicClass = new JsonLogicClass();
+    title = "jsonLogicApp2";
 
-    applyLogic() {
-        this.jsonLogicClass.js2jsonlogic();
-    }
 }
