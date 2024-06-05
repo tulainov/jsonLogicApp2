@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import * as jsonLogic from 'json-logic-js';
 import { FormBuilder, FormArray, Validators } from '@angular/forms';
+import { LogicNode } from "./LogicNode";
+import { MatTreeNestedDataSource, MatTreeNodeToggle, MatTreeNode } from "@angular/material/tree";
+import { NestedTreeControl } from "@angular/cdk/tree";
+
+// TODO: add the json string with JSON pipe
 
 @Component({
     selector: 'app-tree-and-logic',
@@ -9,75 +14,37 @@ import { FormBuilder, FormArray, Validators } from '@angular/forms';
 })
 export class TreeAndLogicComponent {
 
-    operation: any;
-    val: any;
-    result: any;
+  logic = this.formBuilder.group({
+    nodes: this.formBuilder.array([])
+  });
 
-    constructor(private formBuilder: FormBuilder) {}
+  dataSource = new MatTreeNestedDataSource<LogicNode>();
+  treeControl = new NestedTreeControl<LogicNode>
+                                                    (node => node.children);
 
-    logic = this.formBuilder.group({
-        data: ['', Validators.required],
-        condition: ['', Validators.required],
-        logicalOperator: ['', Validators.required],
-        nodes: this.formBuilder.array([])
-    });
+  constructor(private formBuilder: FormBuilder) {}
 
-    get nodes() {
-        return this.logic.get('nodes') as FormArray;
-    }
+  ngOnInit() {
+    this.addNode();
+  }
 
-    get condition() {
-        return this.logic.get('condition');
-    }
+  // get nodes() {
+  //     return this.logic.get('nodes') as FormArray;
+  // }
 
-    get data() {
-        return this.logic.get('data');
-    }
+  addNode() {
 
-    get logicalOperator() {
-        return this.logic.get('logicalOperator');
-    }
+      // this.logic.push(node.children);
+  }
 
-    addNode() {
-        const node = this.formBuilder.group({
-            data: ['', Validators.required],
-            condition: ['', Validators.required]
-        });
-        this.nodes.push(node);
-    }
 
-    convertOpAndVal() {
-        const cond = this.condition?.value as string;
+  refreshPage() {
+      window.location.reload();
+  }
 
-        if (!cond) {
-            throw new Error('Condition is required');
-        }
-
-        const parts = cond.split(' ');
-
-        if (parts.length === 2) {
-            this.operation = parts[0];
-            this.val = parseFloat(parts[1]); // Ensure the value is treated as a number
-        } else {
-            throw new Error('Invalid condition format');
-        }
-    }
-
-    applyLogic() {
-        this.convertOpAndVal();
-
-        const dataValue = parseFloat(this.data?.value as string); // Ensure the data is treated as a number
-
-        // Construct JSON Logic rule
-        const rule = {
-            [this.operation]: [dataValue, this.val]
-        };
-
-        // Apply JSON Logic
-        this.result = jsonLogic.apply(rule, {});
-    }
-
-    refreshPage() {
-        window.location.reload();
-    }
+  hasChild = (_: number, node: LogicNode) => {
+        return node && node.children && node.children.length > 0;
+    };
 }
+
+
