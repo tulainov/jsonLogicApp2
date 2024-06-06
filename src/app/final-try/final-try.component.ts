@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import * as jsonLogic from 'json-logic-js';
-import {FormBuilder, Validators, FormArray, FormGroup} from "@angular/forms";
-import {Operations} from './Operations';
-import {OperationInterface} from "./OperationInterface";
+import {FormArray, FormGroup} from "@angular/forms";
 import {FormService} from "../../services/form-service";
 
 @Component({
@@ -20,15 +18,15 @@ export class FinalTryComponent implements OnInit {
     this.form = this.formService.createChildGroup();
   }
 
-  get box() {
-    return this.form.get('box') as FormArray;
+  get boxes() {
+    return this.form.get('boxes') as FormArray;
   }
 
   addBox() {
-    this.box.push(this.formService.createChildGroup());
+    this.boxes.push(this.formService.createChildGroup());
   }
 
   removeBox(index: number) {
-    this.box.removeAt(index);
+    this.boxes.removeAt(index);
   }
 }

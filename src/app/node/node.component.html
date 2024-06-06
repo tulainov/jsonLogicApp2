@@ -1,5 +1,4 @@
 <div [formGroup]="form">
-
   <input formControlName="firstVal">
   <select formControlName="condition">
     <option *ngFor="let op of formService.childOperations" [value]="op.value">{{ op.label }}</option>
@@ -10,6 +9,6 @@
   <button (click)="removeChild(i)" *ngFor="let child of children.controls; index as i">Remove</button>
 
   <div formArrayName="children">
-    <app-node *ngFor="let child of children.controls; let i = index" [form]="child as FormGroup"></app-node>
+    <app-node *ngFor="let child of children.controls; let i = index" [form]="child"></app-node>
   </div>
 </div>

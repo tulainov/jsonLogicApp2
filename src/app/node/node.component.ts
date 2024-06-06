@@ -1,7 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
-import {OperationInterface} from "../final-try/OperationInterface";
-import {Operations} from "../final-try/Operations";
+import {AbstractControl, FormArray, FormBuilder, FormGroup} from "@angular/forms";
 import {FormService} from "../../services/form-service";
 
 @Component({
@@ -25,5 +23,9 @@ export class NodeComponent {
 
   removeChild(index: number) {
     this.children.removeAt(index);
+  }
+
+  getFormGroup(index: number): FormGroup {
+    return this.children.at(index) as FormGroup;
   }
 }

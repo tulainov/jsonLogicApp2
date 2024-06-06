@@ -22,6 +22,7 @@ import {MatFormField} from "@angular/material/form-field";
 import {MatOption} from "@angular/material/autocomplete";
 import {MatSelect} from "@angular/material/select";
 import { NodeComponent } from './node/node.component';
+import {FormService} from "../services/form-service";
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { NodeComponent } from './node/node.component';
     MatFormFieldModule,
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    FormService
   ],
   bootstrap: [AppComponent]
 })

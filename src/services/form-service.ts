@@ -3,7 +3,9 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {Operations} from "../app/final-try/Operations";
 import {OperationInterface} from "../app/final-try/OperationInterface";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class FormService {
 
   childOperations: OperationInterface[] = Operations.childOperations;

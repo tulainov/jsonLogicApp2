@@ -1,24 +1,23 @@
-<app-node [form]="form"></app-node>
+<div [formGroup]="form">
+  <app-node [form]="form"></app-node>
 
-<mat-form-field>
+  <mat-form-field>
+    <mat-label>Root Operation</mat-label>
+    <mat-select formControlName="root">
+      <mat-option *ngFor="let op of formService.rootOperations" [value]="op.value">{{ op.label }}</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-  <mat-label>Root Operation</mat-label>
-
-  <mat-select formControlName="root">
-    <mat-option *ngFor="let op of formService.rootOperations" [value]="op.value">{{ op.label }}</mat-option>
-  </mat-select>
-
-</mat-form-field>
-
-<div formArrayName="boxes" *ngFor="let box of box.controls; index as i">
-  <div [formGroupName]="i">
-    <!-- ... -->
-    <mat-form-field>
-      <mat-label>Operation</mat-label>
-      <mat-select formControlName="operation">
-        <mat-option *ngFor="let op of formService.childOperations" [value]="op.value">{{ op.label }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <!-- ... -->
+  <div formArrayName="boxes">
+    <div *ngFor="let box of boxes.controls; let i = index" [formGroupName]="i">
+      <!-- ... -->
+      <mat-form-field>
+        <mat-label>Operation</mat-label>
+        <mat-select formControlName="operation">
+          <mat-option *ngFor="let op of formService.childOperations" [value]="op.value">{{ op.label }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- ... -->
+    </div>
   </div>
 </div>
