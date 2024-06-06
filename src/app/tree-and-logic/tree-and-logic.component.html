@@ -17,37 +17,37 @@
 <!--    </div>-->
 
 <!--</section>-->
-<div class="originalDiv">
-  <input type="number" formControlName="firstVal" placeholder="First Value">
-  <select formControlName="condition">
-    <option value="==">==</option>
-    <option value="!=">!=</option>
-    <option value="<"><</option>
-    <option value="<="><=</option>
-    <option value=">">></option>
-    <option value=">=">>=</option>
-  </select>
-  <input type="number" formControlName="secondVal" placeholder="Second Value">
-  <button (click)="addNode()">Add</button>
-</div>
+<!--<div class="originalDiv">-->
+<!--  <input type="number" formControlName="firstVal" placeholder="First Value">-->
+<!--  <select formControlName="condition">-->
+<!--    <option value="==">==</option>-->
+<!--    <option value="!=">!=</option>-->
+<!--    <option value="<"><</option>-->
+<!--    <option value="<="><=</option>-->
+<!--    <option value=">">></option>-->
+<!--    <option value=">=">>=</option>-->
+<!--  </select>-->
+<!--  <input type="number" formControlName="secondVal" placeholder="Second Value">-->
+<!--  <button (click)="addNode()">Add</button>-->
+<!--</div>-->
 
-<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-  <!-- Root node definition -->
-  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
-    <div class="node-content">
-      <span>{{ node.firstVal }} {{ node.condition }} {{ node.secondVal }}</span>
-      <button (click)="addNode(node)">Add</button>
-      <button (click)="removeNode(node)">Remove</button>
-      <select formControlName="logicalOperator" *ngIf="node.children && node.children.length > 0">
-        <option value="and">AND</option>
-        <option value="or">OR</option>
-      </select>
-    </div>
-    <div *ngIf="node.children && node.children.length > 0">
-      <mat-tree-node *ngFor="let child of node.children" matTreeNodeToggle>
-        <app-tree-and-logic [parentNode]="child"></app-tree-and-logic>
-      </mat-tree-node>
-    </div>
-  </mat-tree-node>
-</mat-tree>
+<!--<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">-->
+<!--  &lt;!&ndash; Root node definition &ndash;&gt;-->
+<!--  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>-->
+<!--    <div class="node-content">-->
+<!--      <span>{{ node.firstVal }} {{ node.condition }} {{ node.secondVal }}</span>-->
+<!--      <button (click)="addNode(node)">Add</button>-->
+<!--      <button (click)="removeNode(node)">Remove</button>-->
+<!--      <select formControlName="logicalOperator" *ngIf="node.children && node.children.length > 0">-->
+<!--        <option value="and">AND</option>-->
+<!--        <option value="or">OR</option>-->
+<!--      </select>-->
+<!--    </div>-->
+<!--    <div *ngIf="node.children && node.children.length > 0">-->
+<!--      <mat-tree-node *ngFor="let child of node.children" matTreeNodeToggle>-->
+<!--        <app-tree-and-logic [parentNode]="child"></app-tree-and-logic>-->
+<!--      </mat-tree-node>-->
+<!--    </div>-->
+<!--  </mat-tree-node>-->
+<!--</mat-tree>-->
 
