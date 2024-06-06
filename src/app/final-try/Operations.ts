@@ -2,7 +2,7 @@ import {OperationInterface} from "./Operation";
 
 export class Operations {
 
-    static operations: OperationInterface[] = [
+    static childOperations: OperationInterface[] = [
         { label: '==', value: '=='},
         { label: '===', value: '==='},
         { label: '!=', value: '!='},
@@ -15,5 +15,10 @@ export class Operations {
         {label: 'greater equal', value: '>='},
         {label: 'less', value: '<'},
         {label: 'less equal', value: '<='},
-    ]
+    ];
+
+  static rootOperations: OperationInterface[] = [
+    {label: 'and', value: 'and'},
+    {label: 'or', value: 'or'},
+  ];
 }

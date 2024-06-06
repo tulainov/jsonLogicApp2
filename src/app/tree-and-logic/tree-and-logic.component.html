@@ -1,65 +1,53 @@
-<!--<section [formGroup]="logic">-->
+<!--<section class="tree container">-->
+<!--    <h2>JSON Logic App</h2>-->
 
-<!--  <div id="rootNode">-->
+<!--    <div class="tree-content">-->
+<!--        <mat-tree class="tree mat-elevation-z2"-->
+<!--                  [dataSource]="dataSource"-->
+<!--                  [treeControl]="treeControl">-->
 
-<!--    <label for="firstVal">Data (type a number): </label>-->
-<!--    <input id="firstVal" type="text" formControlName="firstVal" autocomplete="off" required>-->
-<!--    <br>-->
+<!--            <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>-->
+<!--                {{ node.name }} &lt;!&ndash; Display node name or relevant property &ndash;&gt;-->
+<!--            </mat-tree-node>-->
 
-<!--    <label for="condition">Condition: </label>-->
-<!--    <input id="condition" type="text" formControlName="condition" autocomplete="off" required>-->
+<!--            <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">-->
+<!--            </mat-nested-tree-node>-->
 
-<!--    <label for="secValue">Value: </label>-->
-<!--    <input id="secValue" type="text" formControlName="secValue" autocomplete="off" required>-->
-<!--    <br>-->
-<!--  </div>-->
-
-<!--  <button type="button" (click)="addNode()">Add node</button>-->
-<!--  <br>-->
-
-<!--&lt;!&ndash;  <button type="button"  (click)="applyLogic()">Result</button>&ndash;&gt;-->
-<!--&lt;!&ndash;  <p>{{result}}</p>&ndash;&gt;-->
-
-<!--  <div *ngIf="nodes.length > 0" formArrayName="nodes" id="childNode">-->
-
-<!--    <div *ngFor="let node of nodes.controls; let i = index" [formGroupName]="i">-->
-
-<!--      <label for="nodeFirstVal-{{i}}">Data (type a number): </label>-->
-<!--      <input id="nodeFirstVal-{{i}}" type="text" formControlName="firstVal" autocomplete="off" required>-->
-<!--      <br>-->
-
-<!--      <label for="nodeCondition-{{i}}">Condition: </label>-->
-<!--      <input id="nodeCondition-{{i}}" type="text" formControlName="condition" autocomplete="off" required>-->
-<!--      <br>-->
-
-<!--      <label for="nodeSecValue">Value: </label>-->
-<!--      <input id="nodeSecValue" type="text" formControlName="secValue" autocomplete="off" required>-->
-
+<!--        </mat-tree>-->
 <!--    </div>-->
-<!--  </div>-->
+
 <!--</section>-->
+<div class="originalDiv">
+  <input type="number" formControlName="firstVal" placeholder="First Value">
+  <select formControlName="condition">
+    <option value="==">==</option>
+    <option value="!=">!=</option>
+    <option value="<"><</option>
+    <option value="<="><=</option>
+    <option value=">">></option>
+    <option value=">=">>=</option>
+  </select>
+  <input type="number" formControlName="secondVal" placeholder="Second Value">
+  <button (click)="addNode()">Add</button>
+</div>
 
-<!--<button type="button" (click)="refreshPage()">Refresh</button>-->
-
-
-
-<section class="tree container">
-    <h2>JSON Logic App</h2>
-
-    <div class="tree-content">
-        <mat-tree class="tree mat-elevation-z2"
-                  [dataSource]="dataSource"
-                  [treeControl]="treeControl">
-
-            <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
-                {{ node.name }} <!-- Display node name or relevant property -->
-            </mat-tree-node>
-
-            <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
-                <!-- Nested node content if needed -->
-            </mat-nested-tree-node>
-
-        </mat-tree>
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+  <!-- Root node definition -->
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+    <div class="node-content">
+      <span>{{ node.firstVal }} {{ node.condition }} {{ node.secondVal }}</span>
+      <button (click)="addNode(node)">Add</button>
+      <button (click)="removeNode(node)">Remove</button>
+      <select formControlName="logicalOperator" *ngIf="node.children && node.children.length > 0">
+        <option value="and">AND</option>
+        <option value="or">OR</option>
+      </select>
     </div>
+    <div *ngIf="node.children && node.children.length > 0">
+      <mat-tree-node *ngFor="let child of node.children" matTreeNodeToggle>
+        <app-tree-and-logic [parentNode]="child"></app-tree-and-logic>
+      </mat-tree-node>
+    </div>
+  </mat-tree-node>
+</mat-tree>
 
-</section>

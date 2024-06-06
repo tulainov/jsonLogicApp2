@@ -16,6 +16,7 @@ import {
 import { TreeDemoComponent } from './tree-demo/tree-demo.component';
 import {MatIcon} from "@angular/material/icon";
 import {MatButton, MatIconButton} from "@angular/material/button";
+import { FinalTryComponent } from './final-try/final-try.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import {MatButton, MatIconButton} from "@angular/material/button";
     ProfileEditorComponent,
     TreeAndLogicComponent,
     TreeDemoComponent,
+    FinalTryComponent,
   ],
   imports: [
     BrowserModule,
