@@ -17,6 +17,10 @@ import { TreeDemoComponent } from './tree-demo/tree-demo.component';
 import {MatIcon} from "@angular/material/icon";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import { FinalTryComponent } from './final-try/final-try.component';
+import {MatFormField} from "@angular/material/form-field";
+import {MatOption} from "@angular/material/autocomplete";
+import {MatSelect} from "@angular/material/select";
+import { NodeComponent } from './node/node.component';
 
 
 @NgModule({
@@ -26,6 +30,7 @@ import { FinalTryComponent } from './final-try/final-try.component';
     TreeAndLogicComponent,
     TreeDemoComponent,
     FinalTryComponent,
+    NodeComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +47,9 @@ import { FinalTryComponent } from './final-try/final-try.component';
     MatIconButton,
     MatTreeNodeOutlet,
     MatButton,
+    MatFormField,
+    MatOption,
+    MatSelect,
   ],
   providers: [
     provideClientHydration()

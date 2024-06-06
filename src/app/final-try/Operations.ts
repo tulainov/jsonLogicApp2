@@ -1,4 +1,4 @@
-import {OperationInterface} from "./Operation";
+import {OperationInterface} from "./OperationInterface";
 
 export class Operations {
 

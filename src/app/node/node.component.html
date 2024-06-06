@@ -1,0 +1,16 @@
+<div [formGroup]="form">
+
+  <input formControlName="firstVal">
+  <select formControlName="condition">
+    <!-- Add your conditions here -->
+  </select>
+  <input formControlName="secondVal">
+
+  <button (click)="addChild()">Add</button>
+  <button (click)="removeChild(i)" *ngFor="let child of children.controls; index as i">Remove</button>
+
+  <div formArrayName="children">
+    <app-node *ngFor="let child of children.controls; index as i" [form]="child as FormGroup"></app-node>
+  </div>
+</div>
+

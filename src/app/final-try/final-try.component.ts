@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import * as jsonLogic from 'json-logic-js';
 import {FormBuilder, Validators, FormArray, FormGroup} from "@angular/forms";
 import {Operations} from './Operations';
+import {OperationInterface} from "./OperationInterface";
 
 @Component({
   selector: 'app-final-try',
@@ -11,18 +12,18 @@ import {Operations} from './Operations';
 export class FinalTryComponent {
 
   form: FormGroup;
-  childOperations: Operations[] = Operations.childOperations;
-  rootOperations: Operations[] = Operations.rootOperations;
+  childOperations: OperationInterface[] = Operations.childOperations;
+  rootOperations: OperationInterface[] = Operations.rootOperations;
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       root: '',
-      boxes: this.fb.array([])
+      box: this.fb.array([])
     });
   }
 
   get box() {
-    return this.form.get('boxes') as FormArray;
+    return this.form.get('box') as FormArray;
   }
 
   addBox() {
