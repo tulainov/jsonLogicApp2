@@ -5,7 +5,7 @@
   <mat-label>Root Operation</mat-label>
 
   <mat-select formControlName="root">
-    <mat-option *ngFor="let op of rootOperations" [value]="op.value">{{ op.label }}</mat-option>
+    <mat-option *ngFor="let op of formService.rootOperations" [value]="op.value">{{ op.label }}</mat-option>
   </mat-select>
 
 </mat-form-field>
@@ -16,7 +16,7 @@
     <mat-form-field>
       <mat-label>Operation</mat-label>
       <mat-select formControlName="operation">
-        <mat-option *ngFor="let op of childOperations" [value]="op.value">{{ op.label }}</mat-option>
+        <mat-option *ngFor="let op of formService.childOperations" [value]="op.value">{{ op.label }}</mat-option>
       </mat-select>
     </mat-form-field>
     <!-- ... -->

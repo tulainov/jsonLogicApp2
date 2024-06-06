@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
 import {OperationInterface} from "../final-try/OperationInterface";
 import {Operations} from "../final-try/Operations";
+import {FormService} from "../../services/form-service";
 
 @Component({
   selector: 'app-node',
@@ -11,32 +12,18 @@ import {Operations} from "../final-try/Operations";
 export class NodeComponent {
 
   @Input() form!: FormGroup;
-  childOperations: OperationInterface[] = Operations.childOperations;
-  rootOperations: OperationInterface[] = Operations.rootOperations;
 
-  constructor(private fb: FormBuilder) {
-  }
+  constructor(public formService: FormService) {}
 
   get children() {
     return this.form.get('children') as FormArray;
   }
 
   addChild() {
-    this.children.push(this.createChildGroup());
+    this.children.push(this.formService.createChildGroup());
   }
 
   removeChild(index: number) {
     this.children.removeAt(index);
   }
-
-  private createChildGroup() {
-    return this.fb.group({
-      firstVal: 0,
-      condition: '',
-      secondVal: 0,
-      children: this.fb.array([])
-    });
-  }
-
-  protected readonly FormGroup = FormGroup;
 }

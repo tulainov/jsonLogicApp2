@@ -1,25 +1,23 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as jsonLogic from 'json-logic-js';
 import {FormBuilder, Validators, FormArray, FormGroup} from "@angular/forms";
 import {Operations} from './Operations';
 import {OperationInterface} from "./OperationInterface";
+import {FormService} from "../../services/form-service";
 
 @Component({
   selector: 'app-final-try',
   templateUrl: './final-try.component.html',
   styleUrl: './final-try.component.css'
 })
-export class FinalTryComponent {
+export class FinalTryComponent implements OnInit {
 
-  form: FormGroup;
-  childOperations: OperationInterface[] = Operations.childOperations;
-  rootOperations: OperationInterface[] = Operations.rootOperations;
+  form!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
-    this.form = this.fb.group({
-      root: '',
-      box: this.fb.array([])
-    });
+  constructor(public formService: FormService) {}
+
+  ngOnInit() {
+    this.form = this.formService.createChildGroup();
   }
 
   get box() {
@@ -27,15 +25,10 @@ export class FinalTryComponent {
   }
 
   addBox() {
-    this.box.push(this.fb.group({
-      firstVal: 0,
-      condition: '',
-      secondVal: 0
-    }));
+    this.box.push(this.formService.createChildGroup());
   }
 
   removeBox(index: number) {
     this.box.removeAt(index);
   }
-
 }

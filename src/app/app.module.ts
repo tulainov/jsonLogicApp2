@@ -11,8 +11,9 @@ import {
   MatTreeNode,
   MatTreeNodeDef, MatTreeNodeOutlet,
   MatTreeNodePadding,
-  MatTreeNodeToggle
+  MatTreeNodeToggle,
 } from "@angular/material/tree";
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { TreeDemoComponent } from './tree-demo/tree-demo.component';
 import {MatIcon} from "@angular/material/icon";
 import {MatButton, MatIconButton} from "@angular/material/button";
@@ -50,6 +51,7 @@ import { NodeComponent } from './node/node.component';
     MatFormField,
     MatOption,
     MatSelect,
+    MatFormFieldModule,
   ],
   providers: [
     provideClientHydration()
