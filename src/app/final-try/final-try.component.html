@@ -10,14 +10,14 @@
 
   <div formArrayName="boxes">
     <div *ngFor="let box of boxes.controls; let i = index" [formGroupName]="i">
-      <!-- ... -->
+
       <mat-form-field>
         <mat-label>Operation</mat-label>
         <mat-select formControlName="operation">
           <mat-option *ngFor="let op of formService.childOperations" [value]="op.value">{{ op.label }}</mat-option>
         </mat-select>
       </mat-form-field>
-      <!-- ... -->
+
     </div>
   </div>
 </div>

@@ -15,10 +15,12 @@ export class FormService {
 
   createChildGroup(): FormGroup {
     return this.fb.group({
+      root: '',
       firstVal: 0,
       condition: '',
       secondVal: 0,
-      children: this.fb.array([])
+      children: this.fb.array([]),
+      boxes: this.fb.array([])
     });
   }
 }

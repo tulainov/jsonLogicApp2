@@ -9,6 +9,6 @@
   <button (click)="removeChild(i)" *ngFor="let child of children.controls; index as i">Remove</button>
 
   <div formArrayName="children">
-    <app-node *ngFor="let child of children.controls; let i = index" [form]="child"></app-node>
+    <app-node *ngFor="let child of children.controls; let i = index" [form]="getFormGroup(i)"></app-node>
   </div>
 </div>
